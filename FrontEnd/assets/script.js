@@ -1,0 +1,110 @@
+const reponse = await fetch("http://localhost:5678/api/works")
+const pictures = await reponse.json()
+
+
+
+function galleryCreation() {
+    for (let i=0; i<pictures.length; i++){
+        
+// const pour remplissage
+        const img = document.createElement("img")
+        const figure = document.createElement("figure")
+        const figCaption = document.createElement("figcaption")
+        const gallery = document.querySelector(".gallery")
+
+// Remplissage de la grid
+        img.src= pictures[i].imageUrl
+        figCaption.innerText = pictures[i].title
+        gallery.appendChild(figure)
+        figure.appendChild(img)
+        figure.appendChild(figCaption)
+    }
+}
+galleryCreation()
+
+function galleryCategorie(){
+
+//Creation div Filtre
+    const filter = document.createElement("div")
+    filter.setAttribute("id", "filter")
+    const filterIncrementation = document.querySelector("#portfolio .gallery")
+    filterIncrementation.before(document.getElementById("portfolio").appendChild(filter))
+
+// recuperer catégorie
+    let categoryArray = ["Tous"]
+    for (let i = 0; i <pictures.length; i++){
+        const categoryTerme = pictures[i].category.name
+        const categoryList =categoryArray
+        categoryList.push(categoryTerme)
+        categoryArray = [... new Set(categoryArray)]
+    }
+// ajouter boutons
+    for (let i = 0; i < categoryArray.length; i++ ){
+        const categoryButton = document.createElement("button")
+        categoryButton.innerText= categoryArray[i]
+        filter.appendChild(categoryButton)
+    }
+}
+
+galleryCategorie()
+
+const filterObject = document.querySelectorAll("#filter button")
+
+// Maj boutons couleurs
+function classCheck(nbr){
+    for (let i=0; i < filterObject.length; i++){
+        if( filterObject[i].className === "active") {
+            filterObject[i].classList.remove("active")
+        }
+        filterObject[nbr].classList.add("active")
+    }
+}
+
+// Creation des filtres par type 
+function filterGeneration(strType,nbr){
+    for (let i = 0; i < pictures.length; i++){
+        if( pictures[i].category.name === strType) {
+            const img = document.createElement("img")
+            const figure = document.createElement("figure")
+            const figCaption = document.createElement("figcaption")
+            const gallery = document.querySelector(".gallery")
+           
+            img.src= pictures[i].imageUrl
+            figCaption.innerText = pictures[i].title
+            gallery.appendChild(figure)
+            figure.appendChild(img)
+            figure.appendChild(figCaption)  
+            filterObject[nbr].classList.add("active")
+        }
+      }
+}
+
+function galleryFilter(){
+
+    filterObject[0].addEventListener("click", function(){
+        classCheck(0)
+        document.querySelector(".gallery").innerHTML = ""
+        galleryCreation()
+    })
+
+    filterObject[1].addEventListener("click", function(){
+        classCheck(1)
+        document.querySelector(".gallery").innerHTML = ""
+        filterGeneration("Objets",1)
+    })
+
+    filterObject[2].addEventListener("click", function(){
+        classCheck(2)
+        document.querySelector(".gallery").innerHTML = ""
+        filterGeneration("Appartements",2)
+      })
+
+      filterObject[3].addEventListener("click", function(){
+        classCheck(3)
+        document.querySelector(".gallery").innerHTML = ""
+        filterGeneration("Hotels & restaurants",3)
+      })
+}
+
+galleryFilter()
+

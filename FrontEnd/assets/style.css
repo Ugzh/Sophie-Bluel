@@ -82,7 +82,38 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
+}
+
+#filter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 50px;
+	gap:10px;
+}
+
+#filter button {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #1D6154;
+	background-color: #fff;
+	min-width: 100px;
+	max-width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+	padding: 10px 7px;
+	border: 1px solid #1D6154;
+}
+
+#filter .active {
+	color: #fff;
+	background-color: #1D6154;
+}
+
+#filter button:hover {
+	color: #fff;
+	background-color: #1D6154;
 }
 nav ul {
 	display: flex;
