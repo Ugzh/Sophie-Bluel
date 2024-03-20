@@ -1,6 +1,5 @@
 const reponse = await fetch("http://localhost:5678/api/works")
-const pictures = await reponse.json()
-
+const pictures = await reponse.json();
 
 
 function galleryCreation() {
@@ -108,3 +107,40 @@ function galleryFilter(){
 
 galleryFilter()
 
+
+function isLogged(){
+    let token = localStorage.getItem("token")
+    if (token !== 0 && token!== null && token !== undefined) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function logoutDisplay(){ 
+    if(isLogged() == true){
+        const logButton = document.getElementById('logButton').innerText = "logout"
+    }
+    logButton.addEventListener("click",function(){
+        window.localStorage.removeItem("token")
+    })
+}
+logoutDisplay()
+
+function editArea(){
+    if(isLogged() == true){
+
+    const edit = document.querySelector(".edit")
+    console.log(edit)
+    edit.innerHTML = `
+    <h2>Mes Projets</h2>
+    <a href="">
+    <i class="fa-regular fa-pen-to-square"></i>
+    <span>modifier</span>
+    </a>`;
+    document.getElementById("filter").style.display="none"
+    document.querySelector(".edit").style.marginBottom="80px"
+}
+}
+
+editArea()

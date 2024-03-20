@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -62,16 +63,17 @@ section {
 	margin: 50px 0
 }
 
-h1{
+h1 a{
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+	text-decoration: none;
 }
 
-h1 > span {
+h1 a > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
@@ -97,7 +99,7 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: #1D6154;
-	background-color: #fff;
+	background-color: #FFFEF8;
 	min-width: 100px;
 	max-width: 180px;
 	text-align: center;
@@ -107,7 +109,7 @@ h2{
 }
 
 #filter .active {
-	color: #fff;
+	color: #FFFEF8;
 	background-color: #1D6154;
 }
 
@@ -126,8 +128,16 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
-	color: #B1663C;
+li:hover, li a:hover {
+	color: #B1663C !important;
+}
+
+li a {
+	text-decoration: none;
+}
+
+li a:visited{
+	color: #000;
 }
 #introduction {
 	display: flex;
@@ -154,8 +164,30 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
 }
+
+.edit {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.5em;
+	align-items: center;
+	gap : 10px;
+}
+
+.edit a {
+	text-decoration: none;
+}
+
+.edit a:visited {
+	color: #000;
+}
+
+.edit i {
+	padding-left: 10px;
+	font-size: 15px;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -211,9 +243,12 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+footer {
+	background-color: #fff;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
-}
-
+	padding: 2em;
+} 

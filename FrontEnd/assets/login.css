@@ -1,0 +1,53 @@
+
+#contact h2 {
+    padding: 100px 0 30px 0;
+    margin: 0;
+}
+
+#contact a {
+    display: block;
+    text-align: center;
+    color: #000;
+}
+
+#contact form {
+    margin: 0;
+}
+
+#login {
+    align-items: center;
+} 
+
+#login div {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+} 
+
+footer {
+	background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer nav ul {
+	padding: 2em;
+} 
+
+footer nav {
+	display: flex;
+	justify-content: flex-end;
+	max-width: 1140px;
+	margin: auto;
+}
+
+input[type="password"]{
+    margin-bottom: 10px;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #174b41;
+}
