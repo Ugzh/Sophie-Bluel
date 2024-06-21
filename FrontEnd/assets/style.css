@@ -129,14 +129,16 @@ table {
 }
 /** end reset css**/
 body {
+  max-width: 1140px;
+  margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
   background-color: #fffef8;
 }
 
-main {
+/* main {
   padding: 0 260px;
-}
+} */
 header {
   display: flex;
   justify-content: space-between;

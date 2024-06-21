@@ -126,7 +126,7 @@ function logoutDisplay() {
 logoutDisplay();
 
 function editArea() {
-  if (isLogged() == true) {
+  if (isLogged()) {
     const edit = document.querySelector(".edit");
     edit.innerHTML = `
     <h2>Mes Projets</h2>
@@ -148,6 +148,24 @@ function editArea() {
       footer.classList.add("modalFilterElement");
       main.classList.add("modalFilterElement");
       modal.classList.add("showModal");
+      if (modal.classList.value === "modal-state showModal") {
+        for (let i = 1; i <= pictures.length; i++) {
+          const trashCan = document.querySelector(
+            `#modal > div > div > figure:nth-child(${[i]}) > i`
+          );
+
+          trashCan.addEventListener("click", () => {
+            const id = pictures[i - 1].id;
+            console.log(id);
+            // fetch(`http://localhost:5678/api/works/${id}`, {
+            //   method: "DELETE",
+            //   headers: {
+            //     Authorization: `Barear ${token}`,
+            //   },
+            // });
+          });
+        }
+      }
     });
 
     const closeIconModal = document.getElementById("modal-close");
@@ -162,8 +180,3 @@ function editArea() {
 }
 
 editArea();
-
-const testIcon = document.querySelector(".modal-state div div div");
-
-const modal = document.querySelector(".modal-state");
-console.log(testIcon);
