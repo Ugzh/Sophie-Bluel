@@ -134,6 +134,7 @@ body {
   font-family: "Work Sans";
   font-size: 14px;
   background-color: #fffef8;
+  position: relative;
 }
 
 /* main {
@@ -169,6 +170,34 @@ h2 {
   font-weight: 700;
   font-size: 30px;
   color: #1d6154;
+}
+
+.preheader {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.preheader-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: white;
+  height: 59px;
+  font-size: 16px;
+  width: 100%;
+}
+.preheader p,
+.preheader i {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+header {
+  padding-top: 5rem;
 }
 
 #filter {
@@ -211,6 +240,9 @@ nav li {
   font-size: 1.2em;
 }
 
+a#logButton {
+  color: #000;
+}
 li:hover,
 li a:hover {
   color: #b1663c !important;
@@ -279,7 +311,9 @@ li a:visited {
 }
 
 .gallery img {
-  width: 100%;
+  width: 370px;
+  height: 490px;
+  object-fit: cover;
 }
 #contact {
   width: 50%;

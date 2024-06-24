@@ -19,6 +19,12 @@
     ></script>
   </head>
   <body>
+    <div class="preheader">
+      <div class="preheader-link">
+        <i class="fa-regular fa-pen-to-square"></i>
+        <p>Mode édition</p>
+      </div>
+    </div>
     <header>
       <h1>
         <a href="index.html"
@@ -82,12 +88,46 @@
     </main>
     <section class="modal-state">
       <div id="modal">
-        <i class="fa-solid fa-xmark" id="modal-close"></i>
-        <h1 class="modal-title">Galerie photo</h1>
+        <i class="fa-solid fa-xmark modal-close"></i>
+        <h2 class="modal-title">Galerie photo</h2>
         <div class="modal-btn-setup">
           <div class="modal-gallery"></div>
           <button class="modal-btn-photo">Ajouter une photo</button>
         </div>
+      </div>
+      <div id="add-pictures">
+        <i class="fa-solid fa-xmark modal-close"></i>
+        <i class="fa-solid fa-arrow-left modal-back"></i>
+        <form action="" method="post" id="form-area">
+          <h1 class="modal-title">Ajout photo</h1>
+          <div class="display-area">
+            <div class="upload-area">
+              <input
+                class="input-upload-area"
+                type="file"
+                name="image"
+                accept="image/png,
+              image/jpeg, image/jpg"
+              />
+              <img class="input-image" src="#" />
+              <i class="fa-regular fa-image" id="skeleton-picture"></i>
+              <div class="btn-area">
+                <i class="fa-solid fa-plus"></i>
+                <a>Ajouter photo</a>
+              </div>
+              <p>jpg, png : 4mo max</p>
+            </div>
+            <label for="title">Titre</label>
+            <input class="title-input" type="text" name="title" id="title" />
+            <label for="category">Catégorie</label>
+            <select name="category" id="category">
+              <option value="1">Objet</option>
+              <option value="2">Appartements</option>
+              <option value="3">Hotels & restaurants</option>
+            </select>
+            <button type="submit" class="modal-btn-photo">Valider</button>
+          </div>
+        </form>
       </div>
     </section>
     <footer>

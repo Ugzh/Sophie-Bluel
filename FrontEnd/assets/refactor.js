@@ -1,5 +1,7 @@
-const response = await fetch("http://localhost:5678/api/works");
-const pictures = await response.json();
+export const response = await fetch("http://localhost:5678/api/works");
+export const pictures = await response.json();
+export const editHeader = document.querySelector(".preheader");
+
 let category = [];
 
 function getCategories() {
@@ -33,24 +35,25 @@ function createFilter() {
 
 createFilter();
 
-function createGallery() {
-  for (let i = 0; i < pictures.length; i++) {
-    // const pour remplissage
-    const img = document.createElement("img");
+export async function createGallery() {
+  const response = await fetch("http://localhost:5678/api/works");
+  const pictures = await response.json();
+  const galleryHomepage = document.querySelector("#portfolio > div.gallery");
+  galleryHomepage.innerHTML = "";
+
+  pictures.forEach((picture) => {
     const figure = document.createElement("figure");
-    const figCaption = document.createElement("figcaption");
-    const gallery = document.querySelector(".gallery");
-    // Remplissage de la grid
-    img.src = pictures[i].imageUrl;
-    figCaption.innerText = pictures[i].title;
-    gallery.appendChild(figure);
-    figure.appendChild(img);
-    figure.appendChild(figCaption);
-  }
+    figure.innerHTML = `
+        <img src="${picture.imageUrl}" alt="${picture.title}">
+        <figcaption>${picture.title}</figcaption>
+      `;
+    galleryHomepage.appendChild(figure);
+  });
 }
 
 createGallery();
 
+const filterObject = document.querySelectorAll("#filter button");
 function classCheck(nbr) {
   for (let i = 0; i < filterObject.length; i++) {
     if (filterObject[i].className === "active") {
@@ -59,7 +62,6 @@ function classCheck(nbr) {
     filterObject[nbr].classList.add("active");
   }
 }
-const filterObject = document.querySelectorAll("#filter button");
 
 function isGalleryActive() {
   for (let i = 0; i < filterObject.length; i++) {
@@ -99,6 +101,7 @@ function isLogged() {
     return true;
   }
 }
+
 function logoutDisplay() {
   if (isLogged() == true) {
     const logButton = (document.getElementById("logButton").innerText =
@@ -106,6 +109,7 @@ function logoutDisplay() {
   }
   logButton.addEventListener("click", function () {
     window.localStorage.removeItem("token");
+    editHeader.style.display = "flex";
   });
 }
 
@@ -122,6 +126,9 @@ function showEditArea() {
     </button>`;
     document.getElementById("filter").style.display = "none";
     document.querySelector(".edit").style.marginBottom = "80px";
+
+    const editHeader = document.querySelector(".preheader");
+    editHeader.style.display = "flex";
   }
 }
 
