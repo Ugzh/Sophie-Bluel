@@ -1,0 +1,234 @@
+.modal-state {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 25%;
+  left: 38%;
+}
+
+#modal,
+#add-pictures {
+  font-family: "Work Sans";
+  position: absolute;
+  z-index: 1;
+  width: 630px;
+  height: 688px;
+  overflow: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#add-pictures {
+  visibility: hidden;
+}
+.modal-close {
+  position: absolute;
+  right: 10px;
+  font-size: 24px;
+  margin-top: 26px;
+  margin-right: 20px;
+}
+.modal-back {
+  position: absolute;
+  cursor: pointer;
+  left: 20px;
+  font-size: 20px;
+  margin-top: 26px;
+  margin-right: 20px;
+}
+
+#category {
+  cursor: pointer;
+}
+.modal-title {
+  text-align: center;
+  font-size: 26px;
+  margin-top: 60px;
+}
+
+.modal-btn-setup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.modal-btn-photo {
+  position: relative;
+  font-family: "Syne";
+  color: white;
+  padding: 10px 60px;
+  background-color: #1d6154;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 60px;
+  border: none;
+  cursor: pointer;
+}
+.modal-gallery {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 80px;
+  padding: 50px 0;
+}
+
+.modal-gallery img {
+  max-height: 102.57px;
+  padding-bottom: 15px;
+  max-width: 77px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-gallery-card {
+  display: flex;
+  position: relative;
+}
+
+.modal-gallery-card i {
+  cursor: pointer;
+  position: absolute;
+  padding: 4px;
+  font-size: 14px;
+  top: 5px;
+  right: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-gallery::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  border: 1px solid #b3b3b3;
+}
+
+.showModal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-close::before {
+  cursor: pointer;
+}
+
+.modalFilterElement {
+  filter: brightness(70%);
+}
+
+#form-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-area {
+  display: flex;
+  width: 420px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  background-color: #e8f1f6;
+  border-radius: 3px;
+  position: relative;
+}
+
+.input-upload-area {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-area {
+  display: flex;
+  margin: 0.5rem 0;
+  color: #306685;
+  padding: 0.75rem 2.25rem;
+  background-color: #cbd6dc;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.display-area .modal-btn-photo {
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto;
+  max-width: 50%;
+}
+
+.btn-area:hover {
+  background-color: #306685;
+  color: #cbd6dc;
+}
+
+.btn-area a {
+  padding-left: 5px;
+  font-weight: 600;
+}
+.upload-area p {
+  font-size: 10px;
+}
+
+.input-image {
+  height: 190px;
+  width: 130px;
+  object-fit: cover;
+  display: none;
+}
+
+#skeleton-picture {
+  font-size: 76px;
+  color: #b9c5cc;
+}
+
+.display-area {
+  display: flex;
+  flex-direction: column;
+}
+.title-input,
+.display-area select {
+  margin: 1rem 0;
+  height: 40px;
+  border: none;
+  box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.display-area select {
+}
+
+@media screen and (max-width: 1650px) {
+  .modal-state {
+    left: 30%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .modal-state {
+    left: 20%;
+  }
+}
+
+.hide-area {
+  display: none;
+}
+
+.show-area {
+  display: block;
+}
+
+.cancel-padding {
+  padding: 0;
+}
