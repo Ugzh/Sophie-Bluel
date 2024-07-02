@@ -16,7 +16,22 @@ const precedentModal = document.querySelector(
 const nextModal = document.querySelector(".modal-btn-photo");
 const modalPicture = document.querySelector("#add-pictures");
 
-function followingModal() {
+async function categoryModal() {
+  const category = document.querySelector("#category");
+  const response = await fetch("http://localhost:5678/api/categories");
+  const categoryList = await response.json();
+  if (response.status !== 200) {
+    alter(` status: ${response.status}`);
+  }
+  let options = "";
+  categoryList.forEach((data) => {
+    options += `<option value="${data.id}">${data.name}</option> `;
+  });
+  category.innerHTML = options;
+}
+
+categoryModal();
+async function followingModal() {
   modalPicture.style.visibility = "visible";
 }
 
@@ -25,6 +40,11 @@ nextModal.addEventListener("click", followingModal);
 
 function previousModal() {
   modalPicture.style.visibility = "hidden";
+  const messageAlert = document.querySelector("#form-area > div > p");
+  if (messageAlert !== null) {
+    console.log(messageAlert);
+    messageAlert.style.display = "none";
+  }
 }
 
 precedentModal.addEventListener("click", previousModal);
@@ -159,13 +179,33 @@ async function sendData() {
       },
       body: formData,
     });
+    if (response.status === 201) {
+      const trashPadding = document.querySelector(".upload-area");
+
+      const skeletonPicture = document.querySelector(".upload-area i");
+      const imageArea = document.querySelector(".input-image");
+      const btnArea = document.querySelector(".btn-area");
+      const textArea = document.querySelector(".upload-area p");
+      trashPadding.classList.remove("cancel-padding");
+      titleInput.value = "";
+      skeletonPicture.style.display = "block";
+      imageArea.style.display = "none";
+      btnArea.classList.remove("hide-area");
+      textArea.classList.remove("hide-area");
+      createGallery();
+      generateTrashCan();
+      previousModal();
+    } else if (response.status === 400) {
+      alert("Veuillez vérifier que tous les champs sont remplis");
+    } else if (response.status === 401) {
+      alert("Vous n'avez pas l'authorisation de publier");
+    } else if (response.status === 500) {
+      alert("Une erreur s'est produite, veuillez réessayer");
+    }
   } catch (error) {
     console.log(response);
     console.error(error);
   }
-  createGallery();
-  generateTrashCan();
-  previousModal();
 }
 
 form.addEventListener("submit", (event) => {
