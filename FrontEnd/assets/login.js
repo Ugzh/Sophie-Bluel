@@ -23,7 +23,7 @@ submitButton.addEventListener("click", async (event) => {
         window.location.href = "./index.html";
       }, 100);
     }
-  } else if (response.status === 401 || response.status === 403) {
+  } else {
     const loginForm = document.querySelector("#login");
     const loginError = document.querySelector("#contact a");
     loginError.classList.add("error-login");
